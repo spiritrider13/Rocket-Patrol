@@ -39,8 +39,11 @@ class Play extends Phaser.Scene {
     }
 
     update() {
-        this.starfield.tilePositionX -= 4;
-        this.p1Rocket.update();
+        this.starfield.tilePositionX -= 4;  // update tile sprite
+        this.p1Rocket.update();             // update p1
+        this.ship01.update();               // update spaceship (x3)
+        this.ship02.update();
+        this.ship03.update();
 
         // update spaceships (x3)
         this.ship01.update();
@@ -49,13 +52,16 @@ class Play extends Phaser.Scene {
 
         //check collisions
         if(this.checkCollision(this.p1Rocket, this.ship03)) {
-            console.log('kaboom ship 03');
+            this.p1Rocket.reset();
+            this.ship03.reset();
         }
         if(this.checkCollision(this.p1Rocket, this.ship02)) {
-            console.log('kaboom ship 02');
+            this.p1Rocket.reset();
+            this.ship02.reset();
         }
         if(this.checkCollision(this.p1Rocket, this.ship01)) {
-            console.log('kaboom ship 01');
+            this.p1Rocket.reset();   
+            this.ship01.reset();     
         }
     }
 
